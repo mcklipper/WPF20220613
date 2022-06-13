@@ -1,0 +1,90 @@
+﻿<Page 
+    x:Class="WPF20220613.Views.MainPage"
+    Language="HU-hu"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:local="clr-namespace:WPF20220613.Views"
+    mc:Ignorable="d" 
+    d:DesignHeight="450" 
+    d:DesignWidth="800"
+    Title="MainPage">
+
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Button
+            HorizontalAlignment="Left"
+            Padding="3"
+            Margin="5" Click="Button_Click">
+            Új tulajdonos
+        </Button>
+
+        <DataGrid
+            x:Name="dgMain"
+            Grid.Row="1"
+            Margin="5 0 5 5"
+            AutoGenerateColumns="False"
+            ColumnWidth="*"
+            ItemsSource="{ Binding Tulajdonosok }">
+
+            <DataGrid.Columns>
+
+                <DataGridTextColumn
+                    Header="Név"
+                    Binding="{ Binding Nev }"/>
+
+                <DataGridTextColumn
+                    Header="Születési idő"
+                    Binding="{ Binding SzuletesiIdo,
+                        StringFormat=\{0:yyyy. MMMM. dd\} }"/>
+
+                <DataGridTextColumn
+                    Header="Születési hely"
+                    Binding="{ Binding SzuletesiHely }"/>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="EditButton_Click">
+                                Szerkesztés
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="DeleteButton_Click">
+                                Törlés
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button
+                                Click="ShowEstatesButton_Click">
+                                Ingatlanok
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+
+            </DataGrid.Columns>
+            
+        </DataGrid>
+        
+    </Grid>
+    
+</Page>
